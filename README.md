@@ -1,4 +1,4 @@
-# High-Performance Computing with Python
+# High-Performance Computing with Python, INS
 
 This repository demonstrates how to set up a Python environment for high-performance computing tasks. It leverages tools like **NumPy**, **Numba**, and **CuPy** for fast numerical computations and includes **SWIG** for integrating C++ code with Python. 
 
@@ -25,28 +25,32 @@ cd  workshop_hpcpy
 
 ### Step 2: Create a Conda Environment
 1. Ensure that **conda** is installed on your system. If not, download and install [Miniconda](https://docs.conda.io/en/latest/miniconda.html) or [Anaconda](https://www.anaconda.com/).
-2. Create a new environment named `hpc`:
+2. Create a new environment named `hpc_env`:
+   
    ```bash
-   conda create -n hpc python=3.10 -y
+   conda env create -f environment.yml
+   ```
+   or
+   ```bash
+   conda create -n hpc_env python=3.10 -y
    ```
 3. Activate the environment:
    ```bash
-   conda activate hpc
+   conda activate hpc_env
    ```
 
 ---
 
 ### Step 3: Install Dependencies
 ```bash
+# no need for this step if used yml file.
 conda install PACKAGE_NAME
 conda install anaconda::scikit-learn 
+conda install anaconda::networkx
+conda install conda-forge::matplotlib
 conda install conda-forge::numba  # install from specific channel
 conda install conda-forge::swig # OPTIONAL, for C++ wrapping
 conda install anaconda::ipykernel
-```
-
-```bash
-
 ```
 
 For more details on installing CuPy with specific CUDA versions, see the [CuPy installation guide](https://docs.cupy.dev/en/stable/install.html).
@@ -73,14 +77,16 @@ print(f"CuPy available: {gpu_available}")
 $ which swig # show the path if swig is available
 ```
 
-
-
 ---
 
 ## License
 This project is licensed under the MIT License. See the `LICENSE` file for details.
 
 ---
+
+## Related resources
+- [PythonHPC, CSCS](https://github.com/eth-cscs/PythonHPC)
+- [High-performance computing with Python, JSC](https://gitlab.jsc.fz-juelich.de/sdlbio-courses/hpc-python/-/tree/2022)
 
 ## Contributing
 Feel free to submit issues, fork the repository, and send pull requests. All contributions are welcome!

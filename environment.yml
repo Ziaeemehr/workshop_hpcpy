@@ -1,0 +1,13 @@
+name: hpc_env  # Replace with the desired name of your environment
+channels:
+  - conda-forge
+  - anaconda
+  - defaults
+dependencies:
+  - python=3.10
+  - scikit-learn 
+  - networkx  
+  - matplotlib
+  - numba  
+  - ipykernel
+  - swig 
