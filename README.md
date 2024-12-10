@@ -1,4 +1,4 @@
-# High-Performance Computing with Python, INS
+# High-Performance Computing with Python, TNG
 
 This repository demonstrates how to set up a Python environment for high-performance computing tasks. It leverages tools like **NumPy**, **Numba**, and **CuPy** for fast numerical computations and includes **SWIG** for integrating C++ code with Python. 
 
