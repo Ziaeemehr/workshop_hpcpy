@@ -28,7 +28,7 @@ cd  workshop_hpcpy
 2. Create a new environment named `hpc_env`:
    
    ```bash
-   conda env create -f environment.yml
+   conda env create environment.yml
    ```
    or
    ```bash
