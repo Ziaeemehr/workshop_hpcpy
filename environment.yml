@@ -4,10 +4,15 @@ channels:
   - anaconda
   - defaults
 dependencies:
-  - python=3.10
+  - python=3.11
   - scikit-learn 
   - networkx  
   - matplotlib
   - numba  
   - ipykernel
-  - swig 
+  - swig
+  - jax
+  - jaxlib
+  - rich
+  - memory_profiler
+  - line_profiler

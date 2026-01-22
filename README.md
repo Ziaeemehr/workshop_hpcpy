@@ -1,6 +1,6 @@
 # High-Performance Computing with Python, TNG
 
-This repository demonstrates how to set up a Python environment for high-performance computing tasks. It leverages tools like **NumPy**, **Numba**, and **CuPy** for fast numerical computations and includes **SWIG** for integrating C++ code with Python. 
+This repository demonstrates how to set up a Python environment for high-performance computing tasks. It leverages tools like **NumPy**, **Numba**, **JAX**, and **CuPy** for fast numerical computations and includes **SWIG** for integrating C++ code with Python. 
 
 The package is optimized for both CPU and GPU-based systems, with seamless GPU acceleration provided by **CuPy** (if a CUDA-compatible GPU is available).
 
@@ -9,6 +9,7 @@ The package is optimized for both CPU and GPU-based systems, with seamless GPU a
 ## Features
 - **NumPy** for numerical computing.
 - **Numba** for just-in-time compilation to speed up Python code.
+- **JAX** for composable transformations of numerical code with automatic differentiation.
 - **CuPy** for GPU-accelerated numerical computations (optional).
 - **scikit-learn** for machine learning and data analysis.
 - **SWIG** for wrapping C++ code to be accessible in Python.
@@ -25,32 +26,23 @@ cd  workshop_hpcpy
 
 ### Step 2: Create a Conda Environment
 1. Ensure that **conda** is installed on your system. If not, download and install [Miniconda](https://docs.conda.io/en/latest/miniconda.html) or [Anaconda](https://www.anaconda.com/).
-2. Create a new environment named `hpc_env`:
+2. Create a new environment named `hpc`:
    
    ```bash
-   conda env create environment.yml
-   ```
-   or
-   ```bash
-   conda create -n hpc_env python=3.10 -y
+   conda create -n hpc python=3.11 -y
    ```
 3. Activate the environment:
    ```bash
-   conda activate hpc_env
+   conda activate hpc
    ```
 
 ---
 
 ### Step 3: Install Dependencies
 ```bash
-# no need for this step if used yml file.
-conda install PACKAGE_NAME
-conda install anaconda::scikit-learn 
-conda install anaconda::networkx
-conda install conda-forge::matplotlib
-conda install conda-forge::numba  # install from specific channel
-conda install conda-forge::swig # OPTIONAL, for C++ wrapping
-conda install anaconda::ipykernel
+conda install anaconda::scikit-learn anaconda::networkx conda-forge::matplotlib conda-forge::numba conda-forge::swig anaconda::ipykernel -y
+#JAX
+pip install jax==0.4.28 jaxlib==0.4.28 jax-cuda12-pjrt==0.4.28 jax-cuda12-plugin==0.4.28
 ```
 
 For more details on installing CuPy with specific CUDA versions, see the [CuPy installation guide](https://docs.cupy.dev/en/stable/install.html).
@@ -58,24 +50,67 @@ For more details on installing CuPy with specific CUDA versions, see the [CuPy i
 ---
 
 ### Step 4: Verify Installation
-Run the following Python script to verify that the key libraries are installed and working:
-```python
-import numpy as np
-from numba import jit
-try:
-    import cupy as cp
-    gpu_available = True
-except ImportError:
-    gpu_available = False
-
-print(f"NumPy version: {np.__version__}")
-print(f"Numba JIT test: {jit(lambda x: x)(42)}")
-print(f"CuPy available: {gpu_available}")
-```
+To verify that all dependencies are installed and working correctly, run the provided dependency check script:
 
 ```bash
-$ which swig # show the path if swig is available
+python check_dependencies.py
 ```
+
+This will display a comprehensive table showing:
+- All installed packages and their versions
+- CUDA support availability for GPU-accelerated packages (CuPy, JAX, Numba)
+- A summary of the installation status
+
+**Example Output:**
+```
+High-Performance Computing Python Dependencies Check
+
+          ✓ Installed Packages           
+┏━━━━━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━━━┓
+┃ Package      ┃ Version ┃ CUDA Support ┃
+┡━━━━━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━━━┩
+│ NumPy        │ 2.3.5   │ -            │
+│ Numba        │ 0.63.1  │ Yes          │
+│ JAX          │ 0.4.28  │ Yes          │
+│ CuPy         │ 13.3.0  │ Yes          │
+│ scikit-learn │ 1.8.0   │ -            │
+│ NetworkX     │ 3.6.1   │ -            │
+│ Matplotlib   │ 3.10.8  │ -            │
+└──────────────┴─────────┴──────────────┘
+
+Summary: 7/7 packages installed
+
+╭── GPU/CUDA Status ──╮
+│   CuPy        : Yes │
+│   JAX         : Yes │
+│   Numba       : Yes │
+╰─────────────────────╯
+```
+
+You can also check for SWIG availability:
+```bash
+which swig # show the path if swig is available
+```
+
+---
+
+## Installation on Google Colab
+
+Google Colab comes with most of the required scientific Python packages pre-installed, including JAX, CuPy, NumPy, Numba, and others with GPU support enabled by default.
+
+To verify that all dependencies are properly installed and to check GPU/CUDA availability, simply download and run the dependency check script:
+
+```python
+# Download the check script
+!wget -q https://raw.githubusercontent.com/Ziaeemehr/workshop_hpcpy/main/check_dependencies.py
+
+# Run the dependency check
+!python check_dependencies.py
+```
+
+This will display a table showing all installed packages, their versions, and CUDA support availability.
+
+**Note:** Colab uses NVIDIA GPUs by default. To ensure GPU access, go to **Runtime** → **Change runtime type** and select **GPU** as the hardware accelerator.
 
 ---
 
