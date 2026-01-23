@@ -14,5 +14,6 @@ dependencies:
   - jax
   - jaxlib
   - rich
+  - tqdm
   - memory_profiler
   - line_profiler
