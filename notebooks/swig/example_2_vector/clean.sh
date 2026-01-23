@@ -8,9 +8,13 @@ echo "Cleaning build artifacts..."
 rm -f example_wrap.cxx
 rm -f example_wrap.o
 rm -f example.py
+rm -f benchmark_wrap.cxx
+rm -f benchmark_wrap.o
+rm -f benchmark.py
 
-# Remove compiled shared library
+# Remove compiled shared libraries
 rm -f _example.so
+rm -f _benchmark.so
 
 # Remove build directory if it exists
 rm -rf build/
