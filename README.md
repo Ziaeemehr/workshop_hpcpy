@@ -123,6 +123,8 @@ This project is licensed under the MIT License. See the `LICENSE` file for detai
 - [PythonHPC, CSCS](https://github.com/eth-cscs/PythonHPC)
 - [High-performance computing with Python, JSC](https://gitlab.jsc.fz-juelich.de/sdlbio-courses/hpc-python/-/tree/2022)
 
+*Note: Some of the notebooks in this repository are adapted from the above resources.*
+
 ## Contributing
 Feel free to submit issues, fork the repository, and send pull requests. All contributions are welcome!
 
