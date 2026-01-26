@@ -4,6 +4,10 @@
 \usecolortheme{default}
 \setbeamertemplate{navigation symbols}{}
 
+\usepackage{xcolor}
+\usepackage{tikz}
+\definecolor{lightblue}{RGB}{37, 122, 232}
+
 \title[HPC with Python]{High-Performance Computing with Python}
 \subtitle{}
 \author{Abolfazl Ziaeemehr}
@@ -13,11 +17,17 @@
 \begin{document}
 
 %------------------------------------------------
-\begin{frame}
+\begin{frame}[plain]
   \titlepage
-  \vspace{1cm}
+  \vspace{0.3cm}
   \centering
-  \includegraphics[width=3cm]{ins_logo.png}
+  \includegraphics[width=0.5\textwidth]{images/00.png}
+  
+  \begin{tikzpicture}[remember picture,overlay]
+    \node[anchor=south west,inner sep=10pt] at (current page.south west) {
+      \includegraphics[width=2.5cm]{images/ins_logo.png}
+    };
+  \end{tikzpicture}
 \end{frame}
 
 %------------------------------------------------
@@ -83,6 +93,70 @@ Profiling notebooks:
 \end{frame}
 
 %================================================
+\section{Parallelization Strategies}
+
+\begin{frame}{Parallelization Strategies: Problem-Dependent}
+\begin{columns}
+\column{0.55\textwidth}
+\textcolor{lightblue}{\textbf{Different problems require different parallelization approaches:}}
+
+\vspace{0.3cm}
+\begin{itemize}
+  \item \textbf{Large ODE systems} (e.g., 10,000+ equations)
+  \begin{itemize}
+    \item Multi-threading within solver
+    \item Parallel linear algebra operations
+    \item GPU acceleration (CUDA, OpenCL)
+  \end{itemize}
+  
+  \item \textbf{Small ODE systems with optimization}
+  \begin{itemize}
+    \item Parallelize the optimization algorithm
+    \item Multiple optimization runs simultaneously
+    \item Parallel gradient computations
+  \end{itemize}
+  
+  \item \textbf{Parameter sweeps / Ensemble simulations}
+  \begin{itemize}
+    \item Embarrassingly parallel
+    \item Each parameter set runs independently
+    \item Ideal for multiprocessing or job arrays
+  \end{itemize}
+\end{itemize}
+
+\column{0.49\textwidth}
+\centering
+\includegraphics[width=\textwidth]{images/01.png}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Example: ODE Parallelization Strategies}
+\begin{columns}
+\column{0.48\textwidth}
+\textbf{Within-solver parallelism:}
+\begin{itemize}
+  \item Jacobian computation
+  \item Matrix operations
+  \item Implicit method solves
+\end{itemize}
+
+\column{0.48\textwidth}
+\textbf{Across-simulation parallelism:}
+\begin{itemize}
+  \item Different initial conditions
+  \item Parameter space exploration
+  \item Monte Carlo simulations
+\end{itemize}
+\end{columns}
+
+\vspace{0.5cm}
+Key message:
+\begin{block}{}
+Choose your parallelization strategy based on the problem structure, not just the tools available.
+\end{block}
+\end{frame}
+
+%================================================
 \section{Multiprocessing}
 
 \begin{frame}{Multiprocessing in Python}
@@ -103,7 +177,6 @@ Profiling notebooks:
 \vspace{0.3cm}
 Examples:
 \begin{itemize}
-  \item Monte-Carlo simulations
   \item Batch data processing
 \end{itemize}
 \end{frame}
