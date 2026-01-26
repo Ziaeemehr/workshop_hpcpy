@@ -14,6 +14,30 @@ The package is optimized for both CPU and GPU-based systems, with seamless GPU a
 - **scikit-learn** for machine learning and data analysis.
 - **SWIG** for wrapping C++ code to be accessible in Python.
 
+## Notebooks
+
+| Notebook | Description | Colab |
+|----------|-------------|-------|
+| Memory Profiling | Profiling memory usage with line profiler | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Ziaeemehr/workshop_hpcpy/blob/main/notebooks/profiling/mem_line_profiler.ipynb) |
+| Multiprocessing | Using Python's multiprocessing module | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Ziaeemehr/workshop_hpcpy/blob/main/notebooks/multiprocessing/note_multiprocessing.ipynb) |
+| Numba Euclidean | Computing Euclidean distance matrix with Numba | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Ziaeemehr/workshop_hpcpy/blob/main/notebooks/numba/euclidean-distance-matrix-numba.ipynb) |
+| Numba Seed Fix | Fixing random seeds in Numba | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Ziaeemehr/workshop_hpcpy/blob/main/notebooks/numba/numba_fix_seed.ipynb) |
+| Numba Vectorize | Vectorization with Numba | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Ziaeemehr/workshop_hpcpy/blob/main/notebooks/numba/numba_vectorize.ipynb) |
+| Numba Primes | Generating prime numbers with Numba | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Ziaeemehr/workshop_hpcpy/blob/main/notebooks/numba/prime_numbers.ipynb) |
+| Numba Vectorize Solution | Solution for Numba vectorization | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Ziaeemehr/workshop_hpcpy/blob/main/notebooks/numba/solutions/numba_vectorize.ipynb) |
+| Numba CUDA Basics | Basics of CUDA programming with Numba | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Ziaeemehr/workshop_hpcpy/blob/main/notebooks/numba-cuda/1.numba-cuda-basics.ipynb) |
+| Numba CUDA Performance | Performance analysis with Numba CUDA | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Ziaeemehr/workshop_hpcpy/blob/main/notebooks/numba-cuda/2.performance-analysis.ipynb) |
+| Numba CUDA Memory | Memory optimization in Numba CUDA | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Ziaeemehr/workshop_hpcpy/blob/main/notebooks/numba-cuda/3.memory-optimization.ipynb) |
+| CuPy Kuramoto model | Simulation of the Kuramoto model using CuPy for GPU acceleration | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Ziaeemehr/workshop_hpcpy/blob/main/notebooks/cupy/km_cupy.ipynb) |
+| CuPy Introduction | Basics of CuPy for GPU computing | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Ziaeemehr/workshop_hpcpy/blob/main/notebooks/cupy/note.ipynb) |
+| JAX Introduction | Introduction to JAX for numerical computing | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Ziaeemehr/workshop_hpcpy/blob/main/notebooks/jax/jax_intro.ipynb) |
+| JAX Parallel | Parallel computing with JAX | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Ziaeemehr/workshop_hpcpy/blob/main/notebooks/jax/parallel_intro.ipynb) |
+| JAX Vectorizing | Vectorization techniques in JAX | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Ziaeemehr/workshop_hpcpy/blob/main/notebooks/jax/vectorizing.ipynb) |
+| SWIG Hello Example | SWIG example: Hello world | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Ziaeemehr/workshop_hpcpy/blob/main/notebooks/native-extentions/swig/example_1_hello/runme.ipynb) |
+| SWIG Vector Example | SWIG example: Vector operations | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Ziaeemehr/workshop_hpcpy/blob/main/notebooks/native-extentions/swig/example_2_vector/runme.ipynb) |
+| Pybind11 Intro | Introduction to Pybind11 for C++ bindings | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Ziaeemehr/workshop_hpcpy/blob/main/notebooks/native-extentions/pybind11/pybind11_intro.ipynb) |
+| Cython Speedup | Speeding up Python code with Cython | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Ziaeemehr/workshop_hpcpy/blob/main/notebooks/native-extentions/cython/speeding_up__with_Cython.ipynb) |
+
 ---
 
 ## Installation Guide
