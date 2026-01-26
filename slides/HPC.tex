@@ -1,0 +1,304 @@
+\documentclass[aspectratio=169]{beamer}
+
+\usetheme{Madrid}
+\usecolortheme{default}
+\setbeamertemplate{navigation symbols}{}
+
+\title[HPC with Python]{High-Performance Computing with Python}
+\subtitle{}
+\author{Abolfazl Ziaeemehr}
+\institute{Institut de Neuroscience des Systèmes, Inserm, Aix-Marseille University}
+\date{\today}
+
+\begin{document}
+
+%------------------------------------------------
+\begin{frame}
+  \titlepage
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}{Outline}
+\tableofcontents
+\end{frame}
+
+%================================================
+\section{Why Performance Matters}
+
+\begin{frame}{Why High-Performance Python?}
+\begin{itemize}
+  \item Python is expressive, readable, and productive
+  \item But naïve Python can be slow
+  \item HPC Python = \textbf{identify bottlenecks + use the right tool}
+\end{itemize}
+
+\vspace{0.3cm}
+Key message:
+\begin{block}{}
+Do not optimize blindly. Measure first.
+\end{block}
+\end{frame}
+
+%================================================
+\section{Profiling}
+
+\begin{frame}{Profiling: The First Step}
+\begin{itemize}
+  \item Performance intuition is often wrong
+  \item Profiling tells you:
+    \begin{itemize}
+      \item Where time is spent
+      \item Which functions dominate runtime
+    \end{itemize}
+  \item Optimization without profiling is guesswork
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Types of Profiling}
+\begin{itemize}
+  \item \textbf{Time profiling}
+    \begin{itemize}
+      \item CPU time per function
+      \item Line-by-line cost
+    \end{itemize}
+  \item \textbf{Memory profiling}
+    \begin{itemize}
+      \item Allocation hotspots
+      \item Leaks and excessive copies
+    \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Notebook Demo}
+\begin{block}{Live demo}
+Profiling notebooks:
+\begin{itemize}
+  \item cProfile / line\_profiler
+  \item Memory profiler
+\end{itemize}
+\end{block}
+\end{frame}
+
+%================================================
+\section{Multiprocessing}
+
+\begin{frame}{Multiprocessing in Python}
+\begin{itemize}
+  \item Python has a Global Interpreter Lock (GIL)
+  \item Threads do not run Python bytecode in parallel
+  \item \textbf{Multiprocessing} uses multiple OS processes
+\end{itemize}
+\end{frame}
+
+\begin{frame}{When Multiprocessing Works Well}
+\begin{itemize}
+  \item CPU-bound tasks
+  \item Embarrassingly parallel problems
+  \item Independent simulations / parameter sweeps
+\end{itemize}
+
+\vspace{0.3cm}
+Examples:
+\begin{itemize}
+  \item Monte-Carlo simulations
+  \item Batch data processing
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Costs of Multiprocessing}
+\begin{itemize}
+  \item Process startup overhead
+  \item Data serialization (pickling)
+  \item Memory duplication
+\end{itemize}
+
+\begin{block}{Rule of thumb}
+Large tasks, coarse parallelism.
+\end{block}
+\end{frame}
+
+\begin{frame}{Notebook Demo}
+\begin{block}{Live demo}
+Multiprocessing notebooks:
+\begin{itemize}
+  \item multiprocessing.Pool
+  \item Joblib
+\end{itemize}
+\end{block}
+\end{frame}
+
+%================================================
+\section{Numba}
+
+\begin{frame}{Numba: JIT Compilation}
+\begin{itemize}
+  \item Just-In-Time compilation for Python
+  \item Compiles numerical code to machine code
+  \item Minimal code changes
+\end{itemize}
+\end{frame}
+
+\begin{frame}{What Numba Excels At}
+\begin{itemize}
+  \item Tight loops
+  \item Numerical kernels
+  \item Numpy-like code with explicit loops
+\end{itemize}
+
+\begin{block}{Mental model}
+Numba turns Python loops into C-like speed.
+\end{block}
+\end{frame}
+
+\begin{frame}{Limitations of Numba}
+\begin{itemize}
+  \item Limited Python features
+  \item Dynamic typing is restricted
+  \item Compilation overhead on first call
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Notebook Demo}
+\begin{block}{Live demo}
+Numba notebooks:
+\begin{itemize}
+  \item @njit
+  \item Parallel loops
+\end{itemize}
+\end{block}
+\end{frame}
+
+%================================================
+\section{CuPy}
+
+\begin{frame}{CuPy: Numpy on the GPU}
+\begin{itemize}
+  \item GPU-accelerated array library
+  \item Numpy-compatible API
+  \item CUDA backend
+\end{itemize}
+\end{frame}
+
+\begin{frame}{When CuPy Is a Good Fit}
+\begin{itemize}
+  \item Large array operations
+  \item Linear algebra
+  \item Elementwise kernels
+\end{itemize}
+
+\begin{block}{Key idea}
+Same code style, different device.
+\end{block}
+\end{frame}
+
+\begin{frame}{Costs and Pitfalls}
+\begin{itemize}
+  \item Data transfer CPU $\leftrightarrow$ GPU
+  \item GPU memory limits
+  \item Small arrays often slower
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Notebook Demo}
+\begin{block}{Live demo}
+CuPy notebooks:
+\begin{itemize}
+  \item cupy.asarray
+  \item GPU speedups
+\end{itemize}
+\end{block}
+\end{frame}
+
+%================================================
+\section{JAX}
+
+\begin{frame}{JAX: Composable High-Performance Python}
+\begin{itemize}
+  \item Functional programming style
+  \item XLA compilation
+  \item CPU, GPU, TPU support
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Core JAX Transformations}
+\begin{itemize}
+  \item \textbf{jit} – compilation
+  \item \textbf{vmap} – vectorization
+  \item \textbf{grad} – automatic differentiation
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Why JAX Is Powerful}
+\begin{itemize}
+  \item Performance + composability
+  \item Differentiable programming
+  \item Research-grade and production-grade
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Trade-offs}
+\begin{itemize}
+  \item Functional mindset required
+  \item Less dynamic than pure Python
+  \item Compilation latency
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Notebook Demo}
+\begin{block}{Live demo}
+JAX notebooks:
+\begin{itemize}
+  \item jit vs pure Python
+  \item vmap patterns
+\end{itemize}
+\end{block}
+\end{frame}
+
+%================================================
+\section{SWIG (Optional)}
+
+\begin{frame}{SWIG: Python Meets C/C++}
+\begin{itemize}
+  \item Interface generator
+  \item Wrap existing C/C++ code
+  \item Use legacy HPC libraries
+\end{itemize}
+\end{frame}
+
+\begin{frame}{When SWIG Makes Sense}
+\begin{itemize}
+  \item Existing C/C++ codebase
+  \item Performance-critical kernels
+  \item Long-term maintenance
+\end{itemize}
+\end{frame}
+
+%================================================
+\section{Summary}
+
+\begin{frame}{Choosing the Right Tool}
+\begin{center}
+\begin{tabular}{l l}
+\textbf{Problem} & \textbf{Tool} \\
+\hline
+Unknown bottleneck & Profiling \\
+CPU-bound loops & Numba \\
+Parallel tasks & Multiprocessing \\
+GPU arrays & CuPy \\
+Composable HPC & JAX \\
+Legacy C/C++ & SWIG \\
+\end{tabular}
+\end{center}
+\end{frame}
+
+\begin{frame}{Final Message}
+\begin{block}{}
+High-performance Python is not one tool —  
+it is knowing \textbf{when} to use each tool.
+\end{block}
+
+\vspace{0.3cm}
+Questions?
+\end{frame}
+
+\end{document}
