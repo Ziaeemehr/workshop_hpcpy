@@ -43,6 +43,7 @@ cd  workshop_hpcpy
 conda install anaconda::scikit-learn anaconda::networkx conda-forge::matplotlib conda-forge::numba conda-forge::swig anaconda::ipykernel -y
 #JAX
 pip install jax==0.4.28 jaxlib==0.4.28 jax-cuda12-pjrt==0.4.28 jax-cuda12-plugin==0.4.28
+# Note: JAX versions may vary depending on your machine and CUDA version.
 ```
 
 For more details on installing CuPy with specific CUDA versions, see the [CuPy installation guide](https://docs.cupy.dev/en/stable/install.html).
