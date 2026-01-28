@@ -52,6 +52,12 @@ Do not optimize blindly. Measure first.
 \end{block}
 \end{frame}
 
+\begin{frame}{Why Python is Still OK?}
+\begin{block}{}
+Most heavy computation happens either in compiled libraries, Numba, JAX, or on GPUs, so Python mainly \textbf{orchestrates the workflow}.
+\end{block}
+\end{frame}
+
 %================================================
 \section{Profiling}
 
@@ -174,11 +180,6 @@ Choose your parallelization strategy based on the problem structure, not just th
   \item Independent simulations / parameter sweeps
 \end{itemize}
 
-\vspace{0.3cm}
-Examples:
-\begin{itemize}
-  \item Batch data processing
-\end{itemize}
 \end{frame}
 
 \begin{frame}{Costs of Multiprocessing}
@@ -349,21 +350,23 @@ JAX notebooks:
 \end{frame}
 
 %================================================
-\section{SWIG (Optional)}
+\section{Native Extensions (Optional)}
 
-\begin{frame}{SWIG: Python Meets C/C++}
+\begin{frame}{Native Extensions: Python Meets C/C++}
 \begin{itemize}
-  \item Interface generator
+  \item Interface generators and compilers
   \item Wrap existing C/C++ code
   \item Use legacy HPC libraries
+  \item Tools: SWIG, PyBind11, Cython
 \end{itemize}
 \end{frame}
 
-\begin{frame}{When SWIG Makes Sense}
+\begin{frame}{When Native Extensions Make Sense}
 \begin{itemize}
   \item Existing C/C++ codebase
   \item Performance-critical kernels
   \item Long-term maintenance
+  \item Memory-intensive computations
 \end{itemize}
 \end{frame}
 
@@ -380,7 +383,7 @@ CPU-bound loops & Numba \\
 Parallel tasks & Multiprocessing \\
 GPU arrays & CuPy \\
 Composable HPC & JAX \\
-Legacy C/C++ & SWIG \\
+Legacy C/C++ & Native Extensions \\
 \end{tabular}
 \end{center}
 \end{frame}
