@@ -2,7 +2,7 @@
 
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/Ziaeemehr/workshop_hpcpy/main)
 
-This repository demonstrates how to set up a Python environment for high-performance computing tasks. It leverages tools like **NumPy**, **Numba**, **JAX**, and **CuPy** for fast numerical computations and includes **SWIG** for integrating C++ code with Python. 
+This repository demonstrates how to set up a Python environment for high-performance computing tasks. It leverages tools like **NumPy**, **Numba**, **JAX**, and **CuPy** for fast numerical computations and includes **SWIG**, **Cython**, and **Pybind11** for integrating C/C++ code with Python. 
 
 The package is optimized for both CPU and GPU-based systems, with seamless GPU acceleration provided by **CuPy** (if a CUDA-compatible GPU is available).
 
@@ -13,8 +13,9 @@ The package is optimized for both CPU and GPU-based systems, with seamless GPU a
 - **Numba** for just-in-time compilation to speed up Python code.
 - **JAX** for composable transformations of numerical code with automatic differentiation.
 - **CuPy** for GPU-accelerated numerical computations (optional).
-- **scikit-learn** for machine learning and data analysis.
 - **SWIG** for wrapping C++ code to be accessible in Python.
+- **Cython** for compiling Python code to C for performance.
+- **Pybind11** for binding C++ code to Python.
 
 ## Notebooks
 
